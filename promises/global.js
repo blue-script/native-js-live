@@ -44,8 +44,8 @@ var axios = {
 var findUserInDb = id => {
 	const users = [
 		{ id: 1, name: 'Dimych', friend: 3 },
-		{ id: 2, name: 'Sveta', friend: 3 },
-		{ id: 3, name: 'Valera', friend: 3 },
+		{ id: 2, name: 'Sveta', friend: null },
+		{ id: 3, name: 'Valera', friend: 2 },
 	]
 	return new Promise((res, rej) => {
 		setTimeout(() => {
@@ -54,3 +54,4 @@ var findUserInDb = id => {
 		}, randomIntFromInterval(500, 1500))
 	})
 }
+export { findUserInDb };
