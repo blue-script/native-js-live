@@ -1,5 +1,7 @@
 <meta charset="UTF-8">
 <script src="doAfter.js"></script>
+<script src="axios.js"></script>
+<script src="api.js"></script>
 <script>
   // let myPromise = new Promise((res,rej) => {
   //    setTimeout(()=>{
@@ -21,21 +23,32 @@
   // doAfter(3).then( () => console.log('а я сработал через 3 секунд') );
   // doAfter(10).then( () => console.log('я сработал через 10 секунд') );
 
-  function doAfter(t) {
-    return new Promise((res,rej)=> {
-      console.log(1)
-      setTimeout(() => {
-        res()
+  // function doAfter(t) {
+  //   return new Promise((res,rej)=> {
+  //     console.log(1)
+  //     setTimeout(() => {
+  //       res()
+  //
+  //     }, t * 1000)
+  //   })
+  // }
+  //
+  // let promise3 = doAfter(3);
+  // console.log(2)
+  // promise3.then( () => console.log('я сработал через 3 секунд') );
+  // promise3.then( () => console.log('и я тоже следом сработал через 3 секунд') );
+  // promise3.then( () => console.log('и я') );
 
-      }, t * 1000)
-    })
-  }
+  //-----------------------------------
 
-  let promise3 = doAfter(3);
-  console.log(2)
-  promise3.then( () => console.log('я сработал через 3 секунд') );
-  promise3.then( () => console.log('и я тоже следом сработал через 3 секунд') );
-  promise3.then( () => console.log('и я') );
+  const msPr = api.getVacanciesCountFromMicrosoft()
+  const goPr = api.getVacanciesCountFromGoogle()
+  msPr.then(res=>{
+    return goPr.then(res1 => res+res1)
+  }).then(res=>{
+    return api.sendStudentsCountToItKamasutra(res)
+  }).then(res=>console.log(res.data.requestedCount))
+
 
 
 </script>
