@@ -59,6 +59,10 @@ class Hacker extends Coder {
   code() {
     console.log("I'll hack everything")
   }
+
+  hello() {
+    throw new Error(`hacker in the dark`)
+  }
 }
 
 const c1 = new Coder('Great racoon', 'it-incubator.by', new Date(1998, 10, 11), 'c#')
