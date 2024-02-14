@@ -27,6 +27,20 @@ class User {
 const u1 = new User('Dimych', 'it-incubator.by', new Date(1998, 10, 11))
 const u2 = new User('Artem', 'it-incubator.by', new Date(1998, 10, 11))
 
-console.log(u1.name)
-u1.name = 'Igor'
-console.log(u1.name)
+u1.name = 'Racoon'
+let users = [u1, u2]
+users.forEach(u=>u.hello())
+
+class Coder extends User {
+  constructor(name, site, db, tech) {
+    super(name, site, db)
+    this.tech = tech
+  }
+
+  code() {
+    console.log(`${this.name} my ${this.tech} code is: const sum = (a,b) => a+b`)
+  }
+}
+
+const c1 = new Coder('Great racoon', 'it-incubator.by', new Date(1998, 10, 11), 'c#')
+c1.code()
