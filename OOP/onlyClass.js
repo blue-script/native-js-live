@@ -68,3 +68,7 @@ c1.hello()
 const hacker = new Hacker('Great racoon', 'it-incubator.by', new Date(1998, 10, 11), 'c#')
 hacker.code()
 hacker.hello()
+
+// полиморфизм
+let usersPlus = [u1, u2, c1, hacker]
+usersPlus.forEach(u=>u.hello())
